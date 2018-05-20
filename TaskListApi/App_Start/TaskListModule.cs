@@ -1,7 +1,7 @@
 ﻿using System.Configuration;
 using System.Data.Entity;
 using Ninject.Modules;
-using TaskListApi.DataBase;
+using TaskListApi.DataAccessLayer;
 using TaskListApi.Services;
 
 namespace TaskListApi {
@@ -10,7 +10,7 @@ namespace TaskListApi {
             Bind<ITaskListService>().To<TaskListService>();
             Bind(typeof(IRepository<>)).To(typeof(Repository<>));
             Bind<IUnitOfWork>().To<UnitOfWork>();
-            Bind<DbContext>().To<TaskListContext>().WithConstructorArgument("connectionString", c => ConfigurationManager.ConnectionStrings["TaskListContext"].ConnectionString);
+            Bind<DbContext>().To<TaskListContext>().WithConstructorArgument("connectionString", c => ConfigurationManager.ConnectionStrings["TaskListDB"].ConnectionString);
         }
     }
 }

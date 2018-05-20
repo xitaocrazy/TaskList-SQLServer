@@ -1,4 +1,5 @@
-﻿using System.Web.Http;
+﻿using System;
+using System.Web.Http;
 using TaskListApi.Models;
 using TaskListApi.Services;
 
@@ -12,32 +13,62 @@ namespace TaskListApi.Controllers {
 
         [HttpGet]
         public IHttpActionResult GetTasks() {
-            var result = _taskListService.GetTasks();
-            return Ok(result);
+            try {
+                var result = _taskListService.GetTasks();
+                return Ok(result);
+            }
+            catch (Exception ex) {
+                return InternalServerError(ex);
+            }            
         }
 
         [HttpPost]
-        public IHttpActionResult CreateTask([FromBody] TaskListIten task) {
-            var result = _taskListService.CreateTask(task);
-            return Ok(result);
+        public IHttpActionResult CreateTask([FromBody] TaskListItem task) {
+            try {
+                _taskListService.CreateTask(task);
+                return Ok("The task was created.");
+            }
+            catch (Exception ex) {
+                return InternalServerError(ex);
+            }            
         }
 
         [HttpPut]
-        public IHttpActionResult UpdateTask([FromBody] TaskListIten task) {
-            var result = _taskListService.UpdateTask(task);
-            return Ok(result);
+        public IHttpActionResult UpdateTask([FromBody] TaskListItem task) {
+            try {
+                _taskListService.UpdateTask(task);
+                return Ok("The task was updated.");
+            }
+            catch (Exception ex) {
+                return InternalServerError(ex);
+            }
         }
 
         [HttpPut]
         public IHttpActionResult UpdateTaskStatus(int id, bool status) {
-            var result = _taskListService.UpdateTaskStatus(id, status);
-            return Ok(result);
+            try {
+                _taskListService.UpdateTaskStatus(id, status);
+                return Ok("The task was updated.");
+            }
+            catch (Exception ex) {
+                return InternalServerError(ex);
+            }
         }
 
         [HttpDelete]
         public IHttpActionResult DeleteTask(int id) {
-            var result = _taskListService.DeleteTask(id);
-            return Ok(result);
+            try {
+                _taskListService.DeleteTask(id);
+                return Ok("The task was removed.");
+            }
+            catch (Exception ex) {
+                return InternalServerError(ex);
+            }
+        }
+
+        protected override void Dispose(bool disposing) {
+            _taskListService.Dispose();
+            base.Dispose(disposing);
         }
     }
 }
