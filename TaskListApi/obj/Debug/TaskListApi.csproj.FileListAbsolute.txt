@@ -1,0 +1,114 @@
+c:\users\daniel.martins\documents\visual studio 2017\Projects\TaskList\TaskListApi\bin\TaskListApi.dll.config
+c:\users\daniel.martins\documents\visual studio 2017\Projects\TaskList\TaskListApi\bin\TaskListApi.dll
+c:\users\daniel.martins\documents\visual studio 2017\Projects\TaskList\TaskListApi\bin\TaskListApi.pdb
+c:\users\daniel.martins\documents\visual studio 2017\Projects\TaskList\TaskListApi\bin\roslyn\csc.exe
+c:\users\daniel.martins\documents\visual studio 2017\Projects\TaskList\TaskListApi\bin\roslyn\csc.exe.config
+c:\users\daniel.martins\documents\visual studio 2017\Projects\TaskList\TaskListApi\bin\roslyn\csc.rsp
+c:\users\daniel.martins\documents\visual studio 2017\Projects\TaskList\TaskListApi\bin\roslyn\csi.exe
+c:\users\daniel.martins\documents\visual studio 2017\Projects\TaskList\TaskListApi\bin\roslyn\csi.rsp
+c:\users\daniel.martins\documents\visual studio 2017\Projects\TaskList\TaskListApi\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+c:\users\daniel.martins\documents\visual studio 2017\Projects\TaskList\TaskListApi\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+c:\users\daniel.martins\documents\visual studio 2017\Projects\TaskList\TaskListApi\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+c:\users\daniel.martins\documents\visual studio 2017\Projects\TaskList\TaskListApi\bin\roslyn\Microsoft.CodeAnalysis.dll
+c:\users\daniel.martins\documents\visual studio 2017\Projects\TaskList\TaskListApi\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+c:\users\daniel.martins\documents\visual studio 2017\Projects\TaskList\TaskListApi\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+c:\users\daniel.martins\documents\visual studio 2017\Projects\TaskList\TaskListApi\bin\roslyn\Microsoft.CSharp.Core.targets
+c:\users\daniel.martins\documents\visual studio 2017\Projects\TaskList\TaskListApi\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+c:\users\daniel.martins\documents\visual studio 2017\Projects\TaskList\TaskListApi\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+c:\users\daniel.martins\documents\visual studio 2017\Projects\TaskList\TaskListApi\bin\roslyn\Microsoft.VisualBasic.Core.targets
+c:\users\daniel.martins\documents\visual studio 2017\Projects\TaskList\TaskListApi\bin\roslyn\System.AppContext.dll
+c:\users\daniel.martins\documents\visual studio 2017\Projects\TaskList\TaskListApi\bin\roslyn\System.Collections.Immutable.dll
+c:\users\daniel.martins\documents\visual studio 2017\Projects\TaskList\TaskListApi\bin\roslyn\System.Diagnostics.StackTrace.dll
+c:\users\daniel.martins\documents\visual studio 2017\Projects\TaskList\TaskListApi\bin\roslyn\System.IO.FileSystem.dll
+c:\users\daniel.martins\documents\visual studio 2017\Projects\TaskList\TaskListApi\bin\roslyn\System.IO.FileSystem.Primitives.dll
+c:\users\daniel.martins\documents\visual studio 2017\Projects\TaskList\TaskListApi\bin\roslyn\System.Reflection.Metadata.dll
+c:\users\daniel.martins\documents\visual studio 2017\Projects\TaskList\TaskListApi\bin\roslyn\vbc.exe
+c:\users\daniel.martins\documents\visual studio 2017\Projects\TaskList\TaskListApi\bin\roslyn\vbc.exe.config
+c:\users\daniel.martins\documents\visual studio 2017\Projects\TaskList\TaskListApi\bin\roslyn\vbc.rsp
+c:\users\daniel.martins\documents\visual studio 2017\Projects\TaskList\TaskListApi\bin\roslyn\VBCSCompiler.exe
+c:\users\daniel.martins\documents\visual studio 2017\Projects\TaskList\TaskListApi\bin\roslyn\VBCSCompiler.exe.config
+c:\users\daniel.martins\documents\visual studio 2017\Projects\TaskList\TaskListApi\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+c:\users\daniel.martins\documents\visual studio 2017\Projects\TaskList\TaskListApi\bin\Microsoft.Web.Infrastructure.dll
+c:\users\daniel.martins\documents\visual studio 2017\Projects\TaskList\TaskListApi\bin\Newtonsoft.Json.dll
+c:\users\daniel.martins\documents\visual studio 2017\Projects\TaskList\TaskListApi\bin\System.Net.Http.Formatting.dll
+c:\users\daniel.martins\documents\visual studio 2017\Projects\TaskList\TaskListApi\bin\System.Web.Helpers.dll
+c:\users\daniel.martins\documents\visual studio 2017\Projects\TaskList\TaskListApi\bin\System.Web.Http.dll
+c:\users\daniel.martins\documents\visual studio 2017\Projects\TaskList\TaskListApi\bin\System.Web.Http.WebHost.dll
+c:\users\daniel.martins\documents\visual studio 2017\Projects\TaskList\TaskListApi\bin\System.Web.Mvc.dll
+c:\users\daniel.martins\documents\visual studio 2017\Projects\TaskList\TaskListApi\bin\System.Web.Razor.dll
+c:\users\daniel.martins\documents\visual studio 2017\Projects\TaskList\TaskListApi\bin\System.Web.Webpages.Deployment.dll
+c:\users\daniel.martins\documents\visual studio 2017\Projects\TaskList\TaskListApi\bin\System.Web.Webpages.dll
+c:\users\daniel.martins\documents\visual studio 2017\Projects\TaskList\TaskListApi\bin\System.Web.Webpages.Razor.dll
+c:\users\daniel.martins\documents\visual studio 2017\Projects\TaskList\TaskListApi\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+c:\users\daniel.martins\documents\visual studio 2017\Projects\TaskList\TaskListApi\bin\System.Web.Razor.xml
+c:\users\daniel.martins\documents\visual studio 2017\Projects\TaskList\TaskListApi\bin\System.Web.Webpages.xml
+c:\users\daniel.martins\documents\visual studio 2017\Projects\TaskList\TaskListApi\bin\System.Web.Webpages.Deployment.xml
+c:\users\daniel.martins\documents\visual studio 2017\Projects\TaskList\TaskListApi\bin\System.Web.Webpages.Razor.xml
+c:\users\daniel.martins\documents\visual studio 2017\Projects\TaskList\TaskListApi\bin\System.Web.Helpers.xml
+c:\users\daniel.martins\documents\visual studio 2017\Projects\TaskList\TaskListApi\bin\System.Web.Mvc.xml
+c:\users\daniel.martins\documents\visual studio 2017\Projects\TaskList\TaskListApi\bin\Newtonsoft.Json.xml
+c:\users\daniel.martins\documents\visual studio 2017\Projects\TaskList\TaskListApi\bin\System.Net.Http.Formatting.xml
+c:\users\daniel.martins\documents\visual studio 2017\Projects\TaskList\TaskListApi\bin\System.Web.Http.xml
+c:\users\daniel.martins\documents\visual studio 2017\Projects\TaskList\TaskListApi\bin\System.Web.Http.WebHost.xml
+c:\users\daniel.martins\documents\visual studio 2017\Projects\TaskList\TaskListApi\obj\Debug\TaskListApi.csprojResolveAssemblyReference.cache
+c:\users\daniel.martins\documents\visual studio 2017\Projects\TaskList\TaskListApi\obj\Debug\TaskListApi.csproj.CoreCompileInputs.cache
+c:\users\daniel.martins\documents\visual studio 2017\Projects\TaskList\TaskListApi\obj\Debug\TaskListApi.csproj.CopyComplete
+c:\users\daniel.martins\documents\visual studio 2017\Projects\TaskList\TaskListApi\obj\Debug\TaskListApi.dll
+c:\users\daniel.martins\documents\visual studio 2017\Projects\TaskList\TaskListApi\obj\Debug\TaskListApi.pdb
+D:\GitHub\TaskList-SQLServer\TaskListApi\bin\TaskListApi.dll.config
+D:\GitHub\TaskList-SQLServer\TaskListApi\bin\TaskListApi.dll
+D:\GitHub\TaskList-SQLServer\TaskListApi\bin\TaskListApi.pdb
+D:\GitHub\TaskList-SQLServer\TaskListApi\bin\roslyn\csc.exe
+D:\GitHub\TaskList-SQLServer\TaskListApi\bin\roslyn\csc.exe.config
+D:\GitHub\TaskList-SQLServer\TaskListApi\bin\roslyn\csc.rsp
+D:\GitHub\TaskList-SQLServer\TaskListApi\bin\roslyn\csi.exe
+D:\GitHub\TaskList-SQLServer\TaskListApi\bin\roslyn\csi.rsp
+D:\GitHub\TaskList-SQLServer\TaskListApi\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\GitHub\TaskList-SQLServer\TaskListApi\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\GitHub\TaskList-SQLServer\TaskListApi\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\GitHub\TaskList-SQLServer\TaskListApi\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\GitHub\TaskList-SQLServer\TaskListApi\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\GitHub\TaskList-SQLServer\TaskListApi\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\GitHub\TaskList-SQLServer\TaskListApi\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\GitHub\TaskList-SQLServer\TaskListApi\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\GitHub\TaskList-SQLServer\TaskListApi\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\GitHub\TaskList-SQLServer\TaskListApi\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\GitHub\TaskList-SQLServer\TaskListApi\bin\roslyn\System.AppContext.dll
+D:\GitHub\TaskList-SQLServer\TaskListApi\bin\roslyn\System.Collections.Immutable.dll
+D:\GitHub\TaskList-SQLServer\TaskListApi\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\GitHub\TaskList-SQLServer\TaskListApi\bin\roslyn\System.IO.FileSystem.dll
+D:\GitHub\TaskList-SQLServer\TaskListApi\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\GitHub\TaskList-SQLServer\TaskListApi\bin\roslyn\System.Reflection.Metadata.dll
+D:\GitHub\TaskList-SQLServer\TaskListApi\bin\roslyn\vbc.exe
+D:\GitHub\TaskList-SQLServer\TaskListApi\bin\roslyn\vbc.exe.config
+D:\GitHub\TaskList-SQLServer\TaskListApi\bin\roslyn\vbc.rsp
+D:\GitHub\TaskList-SQLServer\TaskListApi\bin\roslyn\VBCSCompiler.exe
+D:\GitHub\TaskList-SQLServer\TaskListApi\bin\roslyn\VBCSCompiler.exe.config
+D:\GitHub\TaskList-SQLServer\TaskListApi\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\GitHub\TaskList-SQLServer\TaskListApi\bin\Microsoft.Web.Infrastructure.dll
+D:\GitHub\TaskList-SQLServer\TaskListApi\bin\Newtonsoft.Json.dll
+D:\GitHub\TaskList-SQLServer\TaskListApi\bin\System.Net.Http.Formatting.dll
+D:\GitHub\TaskList-SQLServer\TaskListApi\bin\System.Web.Helpers.dll
+D:\GitHub\TaskList-SQLServer\TaskListApi\bin\System.Web.Http.dll
+D:\GitHub\TaskList-SQLServer\TaskListApi\bin\System.Web.Http.WebHost.dll
+D:\GitHub\TaskList-SQLServer\TaskListApi\bin\System.Web.Mvc.dll
+D:\GitHub\TaskList-SQLServer\TaskListApi\bin\System.Web.Razor.dll
+D:\GitHub\TaskList-SQLServer\TaskListApi\bin\System.Web.Webpages.Deployment.dll
+D:\GitHub\TaskList-SQLServer\TaskListApi\bin\System.Web.Webpages.dll
+D:\GitHub\TaskList-SQLServer\TaskListApi\bin\System.Web.Webpages.Razor.dll
+D:\GitHub\TaskList-SQLServer\TaskListApi\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\GitHub\TaskList-SQLServer\TaskListApi\bin\System.Web.Razor.xml
+D:\GitHub\TaskList-SQLServer\TaskListApi\bin\System.Web.Webpages.xml
+D:\GitHub\TaskList-SQLServer\TaskListApi\bin\System.Web.Webpages.Deployment.xml
+D:\GitHub\TaskList-SQLServer\TaskListApi\bin\System.Web.Webpages.Razor.xml
+D:\GitHub\TaskList-SQLServer\TaskListApi\bin\System.Web.Helpers.xml
+D:\GitHub\TaskList-SQLServer\TaskListApi\bin\System.Web.Mvc.xml
+D:\GitHub\TaskList-SQLServer\TaskListApi\bin\Newtonsoft.Json.xml
+D:\GitHub\TaskList-SQLServer\TaskListApi\bin\System.Net.Http.Formatting.xml
+D:\GitHub\TaskList-SQLServer\TaskListApi\bin\System.Web.Http.xml
+D:\GitHub\TaskList-SQLServer\TaskListApi\bin\System.Web.Http.WebHost.xml
+D:\GitHub\TaskList-SQLServer\TaskListApi\obj\Debug\TaskListApi.csprojResolveAssemblyReference.cache
+D:\GitHub\TaskList-SQLServer\TaskListApi\obj\Debug\TaskListApi.csproj.CoreCompileInputs.cache
+D:\GitHub\TaskList-SQLServer\TaskListApi\obj\Debug\TaskListApi.csproj.CopyComplete
+D:\GitHub\TaskList-SQLServer\TaskListApi\obj\Debug\TaskListApi.dll
+D:\GitHub\TaskList-SQLServer\TaskListApi\obj\Debug\TaskListApi.pdb
