@@ -12,7 +12,7 @@ namespace TaskListApi.DataAccessLayer {
             _context = context;
         }
 
-        public Repository<Task> TaskListItenRepository => _itensRepository ?? (_itensRepository = new Repository<Task>(_context));
+        public virtual Repository<Task> TaskListItenRepository => _itensRepository ?? (_itensRepository = new Repository<Task>(_context));
 
         public void Save() {
             _context.SaveChanges();

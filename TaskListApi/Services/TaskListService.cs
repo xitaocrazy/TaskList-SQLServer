@@ -24,12 +24,19 @@ namespace TaskListApi.Services {
         }
 
         public void UpdateTask(Task task) {
+            task.LasUpdate = DateTime.Now;
             _unitOfWork.TaskListItenRepository.Update(task);
         }
 
         public void UpdateTaskStatus(int id, bool status) {
             var task = _unitOfWork.TaskListItenRepository.GetById(id);
             task.Status = status;
+            if (status) { //When status = true, task was no finished or was reopened.
+                task.Conclusion = null;
+            }
+            else {
+                task.Conclusion = DateTime.Now;
+            }
             UpdateTask(task);
         }
 
