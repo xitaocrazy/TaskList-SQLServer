@@ -5,14 +5,14 @@ using TaskListApi.Models;
 namespace TaskListApi.DataAccessLayer {
     public class UnitOfWork : IUnitOfWork, IDisposable {
         private readonly DbContext _context;
-        private Repository<TaskListItem> _itensRepository;
+        private Repository<Task> _itensRepository;
         private bool _disposed;
 
         public UnitOfWork(DbContext context) {
             _context = context;
         }
 
-        public Repository<TaskListItem> TaskListItenRepository => _itensRepository ?? (_itensRepository = new Repository<TaskListItem>(_context));
+        public Repository<Task> TaskListItenRepository => _itensRepository ?? (_itensRepository = new Repository<Task>(_context));
 
         public void Save() {
             _context.SaveChanges();

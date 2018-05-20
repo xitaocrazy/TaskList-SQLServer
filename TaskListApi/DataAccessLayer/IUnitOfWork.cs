@@ -2,7 +2,7 @@
 
 namespace TaskListApi.DataAccessLayer {
     public interface IUnitOfWork {
-        Repository<TaskListItem> TaskListItenRepository { get; }
+        Repository<Task> TaskListItenRepository { get; }
         void Save();
         void Dispose();
     }

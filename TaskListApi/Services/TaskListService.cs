@@ -14,30 +14,30 @@ namespace TaskListApi.Services {
             _unitOfWork = unitOfWork;
         }
 
-        public IEnumerable<TaskListItem> GetTasks(Expression<Func<TaskListItem, bool>> filter = null, Func<IQueryable<TaskListItem>, IOrderedQueryable<TaskListItem>> orderBy = null, string includeProperties = "") {
+        public IEnumerable<Task> GetTasks(Expression<Func<Task, bool>> filter = null, Func<IQueryable<Task>, IOrderedQueryable<Task>> orderBy = null, string includeProperties = "") {
             var tasks = _unitOfWork.TaskListItenRepository.Get(filter, orderBy, includeProperties);
             return tasks;
         }
 
-        public void CreateTask(TaskListItem taskListItem) {
-            _unitOfWork.TaskListItenRepository.Insert(taskListItem);
+        public void CreateTask(Task task) {
+            _unitOfWork.TaskListItenRepository.Insert(task);
         }
 
-        public void UpdateTask(TaskListItem taskListItem) {
-            _unitOfWork.TaskListItenRepository.Update(taskListItem);
+        public void UpdateTask(Task task) {
+            _unitOfWork.TaskListItenRepository.Update(task);
         }
 
         public void UpdateTaskStatus(int id, bool status) {
-            var taskListItem = _unitOfWork.TaskListItenRepository.GetById(id);
-            taskListItem.Status = status;
-            UpdateTask(taskListItem);
+            var task = _unitOfWork.TaskListItenRepository.GetById(id);
+            task.Status = status;
+            UpdateTask(task);
         }
 
         public void DeleteTask(int id) {
-            var taskListItem = _unitOfWork.TaskListItenRepository.GetById(id);
-            taskListItem.Status = false;
-            taskListItem.Exclusion = DateTime.Now;
-            UpdateTask(taskListItem);
+            var task = _unitOfWork.TaskListItenRepository.GetById(id);
+            task.Status = false;
+            task.Exclusion = DateTime.Now;
+            UpdateTask(task);
         }
 
         public void Dispose() {

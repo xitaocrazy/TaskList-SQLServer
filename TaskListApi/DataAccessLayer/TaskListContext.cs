@@ -7,7 +7,7 @@ namespace TaskListApi.DataAccessLayer {
         public TaskListContext(string connectionString) : base(connectionString) {
         }
 
-        public DbSet<TaskListItem> Students { get; set; }
+        public DbSet<Task> Students { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder) {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
