@@ -64,3 +64,7 @@ C:\Users\daniel.martins\documents\visual studio 2017\Projects\TaskList\TaskListA
 C:\Users\daniel.martins\documents\visual studio 2017\Projects\TaskList\TaskListApi\bin\Ninject.Web.Common.xml
 C:\Users\daniel.martins\documents\visual studio 2017\Projects\TaskList\TaskListApi\bin\Ninject.Web.WebApi.xml
 C:\Users\daniel.martins\documents\visual studio 2017\Projects\TaskList\TaskListApi\bin\Ninject.Web.WebApi.WebHost.xml
+C:\Users\daniel.martins\documents\visual studio 2017\Projects\TaskList\TaskListApi\bin\EntityFramework.dll
+C:\Users\daniel.martins\documents\visual studio 2017\Projects\TaskList\TaskListApi\bin\EntityFramework.SqlServer.dll
+C:\Users\daniel.martins\documents\visual studio 2017\Projects\TaskList\TaskListApi\bin\EntityFramework.xml
+C:\Users\daniel.martins\documents\visual studio 2017\Projects\TaskList\TaskListApi\bin\EntityFramework.SqlServer.xml

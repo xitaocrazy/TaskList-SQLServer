@@ -1,11 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
+using TaskListApi.DataBase;
 using TaskListApi.Models;
 
 namespace TaskListApi.Services {
     public class TaskListService : ITaskListService {
+        private readonly IUnitOfWork _unitOfWork;
+
+        public TaskListService(IUnitOfWork unitOfWork) {
+            _unitOfWork = unitOfWork;
+        }
+
         public IEnumerable<TaskListIten> GetTasks() {
             return new List<TaskListIten>();
         }
