@@ -34,3 +34,16 @@ D:\GitHub\TaskList-SQLServer\TaskListApi.Tests\obj\Debug\TaskListApi.Tests.cspro
 D:\GitHub\TaskList-SQLServer\TaskListApi.Tests\obj\Debug\TaskListApi.Tests.csproj.CopyComplete
 D:\GitHub\TaskList-SQLServer\TaskListApi.Tests\obj\Debug\TaskListApi.Tests.dll
 D:\GitHub\TaskList-SQLServer\TaskListApi.Tests\obj\Debug\TaskListApi.Tests.pdb
+D:\GitHub\TaskList-SQLServer\TaskListApi.Tests\bin\Debug\TaskListApi.Tests.dll.config
+D:\GitHub\TaskList-SQLServer\TaskListApi.Tests\bin\Debug\WebActivatorEx.dll
+D:\GitHub\TaskList-SQLServer\TaskListApi.Tests\bin\Debug\Ninject.dll
+D:\GitHub\TaskList-SQLServer\TaskListApi.Tests\bin\Debug\EntityFramework.dll
+D:\GitHub\TaskList-SQLServer\TaskListApi.Tests\bin\Debug\Ninject.Web.Common.dll
+D:\GitHub\TaskList-SQLServer\TaskListApi.Tests\bin\Debug\Ninject.xml
+D:\GitHub\TaskList-SQLServer\TaskListApi.Tests\bin\Debug\EntityFramework.xml
+D:\GitHub\TaskList-SQLServer\TaskListApi.Tests\bin\Debug\Ninject.Web.Common.xml
+D:\GitHub\TaskList-SQLServer\TaskListApi.Tests\bin\Debug\FizzWare.NBuilder.dll
+D:\GitHub\TaskList-SQLServer\TaskListApi.Tests\bin\Debug\Moq.dll
+D:\GitHub\TaskList-SQLServer\TaskListApi.Tests\bin\Debug\nunit.framework.dll
+D:\GitHub\TaskList-SQLServer\TaskListApi.Tests\bin\Debug\Moq.xml
+D:\GitHub\TaskList-SQLServer\TaskListApi.Tests\bin\Debug\nunit.framework.xml
