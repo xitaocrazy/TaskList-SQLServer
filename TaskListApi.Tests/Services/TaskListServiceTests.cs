@@ -20,8 +20,6 @@ namespace TaskListApi.Tests.Services {
         private TaskListService _taskListService;
         private IList<Task> _tasks;
         private Task _task;
-        private Task _taskDone;
-        private Task _taskRemoved;
         private DateTime _data;
 
         [SetUp]
@@ -142,9 +140,10 @@ namespace TaskListApi.Tests.Services {
         }
 
         private void CreateMocks() {
-            _mockDbContext = new Mock<DbContext>();
-            _mockRepository = new Mock<Repository<Task>>(_mockDbContext.Object);
-            _mockUnityOfWork = new Mock<UnitOfWork>(_mockDbContext.Object);
+            var mockBehavior = MockBehavior.Strict;
+            _mockDbContext = new Mock<DbContext>(mockBehavior);
+            _mockRepository = new Mock<Repository<Task>>(mockBehavior, _mockDbContext.Object);
+            _mockUnityOfWork = new Mock<UnitOfWork>(mockBehavior, _mockDbContext.Object);
             _taskListService = new TaskListService(_mockUnityOfWork.Object);
         }
 
@@ -184,28 +183,6 @@ namespace TaskListApi.Tests.Services {
                 .With(t => t.Conclusion = null)
                 .With(t => t.Conclusion = null)
                 .Build();
-            _taskDone = Builder<Task>.CreateNew()
-                .With(t => t.Id = 1)
-                .With(t => t.Title = "Task 1")
-                .With(t => t.Status = false)
-                .With(t => t.Description = "Task 1")
-                .With(t => t.Creation = _data)
-                .With(t => t.LasUpdate = _data)
-                .With(t => t.Exclusion = null)
-                .With(t => t.Conclusion = _data)
-                .Build();
-            _taskRemoved = Builder<Task>.CreateNew()
-                .With(t => t.Id = 1)
-                .With(t => t.Title = "Task 1")
-                .With(t => t.Status = false)
-                .With(t => t.Description = "Task 1")
-                .With(t => t.Creation = _data)
-                .With(t => t.LasUpdate = _data)
-                .With(t => t.Exclusion = _data)
-                .With(t => t.Conclusion = null)
-                .Build();
-            _tasks.Add(_taskDone);
-            _tasks.Add(_taskRemoved);
         }
     }
 }

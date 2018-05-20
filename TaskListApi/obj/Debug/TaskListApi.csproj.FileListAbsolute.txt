@@ -133,7 +133,6 @@ D:\GitHub\TaskList-SQLServer\TaskListApi\bin\Newtonsoft.Json.xml
 D:\GitHub\TaskList-SQLServer\TaskListApi\bin\System.Net.Http.Formatting.xml
 D:\GitHub\TaskList-SQLServer\TaskListApi\bin\System.Web.Http.xml
 D:\GitHub\TaskList-SQLServer\TaskListApi\bin\System.Web.Http.WebHost.xml
-D:\GitHub\TaskList-SQLServer\TaskListApi\obj\Debug\TaskListApi.csprojResolveAssemblyReference.cache
 D:\GitHub\TaskList-SQLServer\TaskListApi\obj\Debug\TaskListApi.csproj.CoreCompileInputs.cache
 D:\GitHub\TaskList-SQLServer\TaskListApi\obj\Debug\TaskListApi.csproj.CopyComplete
 D:\GitHub\TaskList-SQLServer\TaskListApi\obj\Debug\TaskListApi.dll
