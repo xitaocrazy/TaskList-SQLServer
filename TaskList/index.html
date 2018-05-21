@@ -1,0 +1,142 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Task List</title>
+
+    <link rel="icon" type="image/png" href="img/favicon_16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="img/favicon_32x32.png" sizes="32x32" />
+
+    <meta name="description" content="My personal Task List" />
+
+    <!-- Facebook Open Graph -->
+    <meta property="og:url" content="index.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Projeto Aurora" />
+    <meta property="og:description" content="My personal Task List" />
+    <meta property="og:image" content="img/aurora_head.png" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:url" content="index.html">
+    <meta name="twitter:title" content="Projeto Aurora">
+    <meta name="twitter:description" content="My personal Task List">
+    <meta name="twitter:image" content="img/aurora_head.png">
+
+    <!-- Styles inclusion -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.css">
+    <link rel="stylesheet" href="css/app.css">
+
+    <!-- Fonts inclusion -->
+    <link href="https://fonts.googleapis.com/css?family=Exo+2:400,400i,600,600i|Lato:400,400i" rel="stylesheet">
+
+    <!-- Node-modules Scripts inclusion -->
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="node_modules/knockout/build/output/knockout-latest.js"></script>
+    <script src="node_modules/knockout-postbox/build/knockout-postbox.min.js"></script>
+    <script src="node_modules/requirejs/require.js"></script>
+
+    <!-- Personal Scripts inclusion -->
+    <script src="js/my.ko.js"></script>
+    <script src="ts/built/src/viewModels/IndexViewModel.js"></script>
+    <script src="ts/built/src/requireJS/requireJSConfig.js"></script>
+    <script src="ts/built/src/models/Task.js"></script>
+</head>
+
+<body>
+<header>    
+</header>
+
+<main>    
+    <section id="to-do-list">
+        <!-- Add New Item To TaskList -->
+        <div class="container">
+            <div class="row text">
+                <h2>Add new <span class="text-highlighted">task!</span></h2>
+            </div>
+            <div class="row new-iten">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input type="text" id="title" class="form-control" required placeholder="Title" data-bind="textInput: title">
+                        <span id="helpBlock" class="help-block" data-bind="visible: hasNoTitle">Add a title</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <input type="text" id="description" class="form-control" required placeholder="Description" data-bind="textInput: description">
+                        <span id="helpBlock" class="help-block" data-bind="visible: hasNoDescription">Add a description</span>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <button class="btn btn-lg btn-success" data-bind="click:addNewItem">Add new</button>
+            </div>
+        </div>
+
+        <!-- TaskList List -->
+        <div class="container">
+            <div class="row text">
+                <h2><span class="text-highlighted">On going List </span>list!</h2>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover" data-bind="bootstrapPopover : {content: 'Click in the item to mark as done', container: 'body', placement: 'right', trigger: 'hover click', delay: 150}">
+                    <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Description</th>
+                    </tr>
+                    </thead>
+                    <tbody data-bind="foreach: taskList">
+                    <tr data-bind="click: $parent.markAsDone.bind($data)">
+                        <td data-bind="text: title"></td>
+                        <td data-bind="text: description"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Done List -->
+        <div class="container">
+            <div class="row text">
+                <h2><span class="text-highlighted">Done </span>list!</h2>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover" data-bind="bootstrapPopover : {content: 'Click in the item to back to tasklist', container: 'body', placement: 'right', trigger: 'hover click', delay: 150}">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody data-bind="foreach: doneList">
+                        <tr data-bind="click: $parent.markAsOnGoing.bind($data)">
+                            <td data-bind="text: title"></td>
+                            <td data-bind="text: description"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>       
+</main>
+
+<footer>
+    <div class="container">
+        <h4>Task List</h4>
+        <p>All rights reserved. May, 2018.</p>
+    </div>
+</footer>
+
+</body>
+
+<script type="text/javascript">
+    var vm = new ViewModels.IndexViewModel();
+    ko.applyBindings(vm);
+</script>
+</html>

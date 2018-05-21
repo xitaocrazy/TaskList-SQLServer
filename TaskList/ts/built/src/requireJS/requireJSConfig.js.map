@@ -1,0 +1,1 @@
+{"version":3,"file":"requireJSConfig.js","sourceRoot":"","sources":["../../../src/requireJS/requireJSConfig.ts"],"names":[],"mappings":"AAAA,OAAO,CAAC,MAAM,CAAC;IACX,OAAO,EAAE,iBAAiB;IAC1B,KAAK,EAAE;QACH,IAAI,EAAE,qBAAqB;KAC9B;IACD,WAAW,EAAE,EAAE;CAClB,CAAC,CAAC"}

@@ -1,3 +1,6 @@
 # Build directories
 bin/
 packages/
+
+# Dependency directories
+node_modules/

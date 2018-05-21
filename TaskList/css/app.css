@@ -1,0 +1,83 @@
+:root {
+    --color-header-bg: #8bd0f8;
+    --color-body-bg: #eef0ec;
+    --color-text: #000000;
+    --color-text-highlighted: #35e6da;
+    --color-footer-bg: #E4E0E0;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    background-color: var(--color-body-bg);
+    color: var(--color-text);
+    font-family: 'Exo 2', sans-serif;
+}
+
+header {
+    text-align: center;
+    font-weight: 600;
+    text-shadow: 2px 2px 12px #635a5a;
+    background-color: var(--color-header-bg);
+    min-height: 30vh;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    background-image: url("../img/To_Do_List.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: auto;
+}
+
+main {
+    text-align: center;
+    min-height: 80vh;
+    height: auto !important;
+    height: 100vh;
+}
+
+section {
+    margin-bottom: 3vh;
+}
+
+.brand-header {
+    display: inline-block;
+    height: 120px;
+    margin-bottom: 5vh;
+}
+
+.text {
+    padding-top: 20px;
+}
+
+span.text-highlighted {
+    color: var(--color-text-highlighted);
+}
+
+table {
+    text-align: left;
+    background-color: #ffffff;
+}
+
+.new-iten {
+    text-align: left !important;
+    padding: 10px;
+}
+
+    .new-iten input {
+        border-radius: 8px;
+    }
+
+input[type="text"] {
+    font-family: 'Lato', sans-serif;
+}
+
+footer {
+    background-color: var(--color-footer-bg);
+    padding-top: 20px;
+    padding-bottom: 10px;
+    color: var(--color-text);
+    text-align: center;
+}
