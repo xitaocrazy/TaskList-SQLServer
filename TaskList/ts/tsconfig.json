@@ -3,7 +3,7 @@
     "outDir": "./built/",
     "sourceMap": true,
     "noImplicitAny": true,
-    "module": "None",
+    "module": "AMD",
     "target": "es5",
     "lib": [ "es2016", "dom" ]
   },

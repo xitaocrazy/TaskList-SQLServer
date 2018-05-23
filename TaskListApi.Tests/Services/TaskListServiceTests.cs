@@ -57,6 +57,12 @@ namespace TaskListApi.Tests.Services {
         }
 
         [Test]
+        public void CreateTask_should_set_creation_date() {
+            _taskListService.UpdateTask(_task);
+            Assert.AreNotEqual(new DateTime(), _task.Creation);
+        }
+
+        [Test]
         public void UpdateTask_should_call_unitOfWork_taskListItenRepository_insert() {
             _taskListService.CreateTask(_task);
             _mockRepository.Verify(r => r.Insert(It.IsAny<Task>()), Times.Once);

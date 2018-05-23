@@ -20,6 +20,7 @@ namespace TaskListApi.Services {
         }
 
         public void CreateTask(Task task) {
+            task.Creation = DateTime.Now;
             _unitOfWork.TaskListItenRepository.Insert(task);
         }
 

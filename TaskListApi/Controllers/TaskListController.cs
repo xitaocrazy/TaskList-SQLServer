@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using TaskListApi.Models;
 using TaskListApi.Services;
 
@@ -17,6 +18,7 @@ namespace TaskListApi.Controllers {
 
         [HttpGet]
         [Route(AllTasks)]
+        [EnableCors("*", "*", "*")]
         public IHttpActionResult GetAllTasks() {
             try {
                 var result = _taskListService.GetTasks();
@@ -29,6 +31,7 @@ namespace TaskListApi.Controllers {
 
         [HttpGet]
         [Route(OnGoingTasks)]
+        [EnableCors("*", "*", "*")]
         public IHttpActionResult GetOnGoingTasks() {
             try {
                 var result = _taskListService.GetTasks(t => t.Status && t.Exclusion == null);
@@ -41,6 +44,7 @@ namespace TaskListApi.Controllers {
 
         [HttpGet]
         [Route(DoneTasks)]
+        [EnableCors("*", "*", "*")]
         public IHttpActionResult GetDoneTasks() {
             try {
                 var result = _taskListService.GetTasks(t => t.Status == false && t.Exclusion == null);
@@ -53,6 +57,7 @@ namespace TaskListApi.Controllers {
 
         [HttpGet]
         [Route(ExcludedTasks)]
+        [EnableCors("*", "*", "*")]
         public IHttpActionResult GetExcludedTasks() {
             try {
                 var result = _taskListService.GetTasks(t => t.Exclusion != null);
@@ -64,6 +69,7 @@ namespace TaskListApi.Controllers {
         }
 
         [HttpPost]
+        [EnableCors("*", "*", "*")]
         public IHttpActionResult CreateTask([FromBody] Task task) {
             try {
                 _taskListService.CreateTask(task);
@@ -75,6 +81,7 @@ namespace TaskListApi.Controllers {
         }
 
         [HttpPut]
+        [EnableCors("*", "*", "*")]
         public IHttpActionResult UpdateTask([FromBody] Task task) {
             try {
                 _taskListService.UpdateTask(task);
@@ -86,6 +93,7 @@ namespace TaskListApi.Controllers {
         }
 
         [HttpPut]
+        [EnableCors("*", "*", "*")]
         public IHttpActionResult UpdateTaskStatus(int id, bool status) {
             try {
                 _taskListService.UpdateTaskStatus(id, status);
@@ -97,6 +105,7 @@ namespace TaskListApi.Controllers {
         }
 
         [HttpDelete]
+        [EnableCors("*", "*", "*")]
         public IHttpActionResult DeleteTask(int id) {
             try {
                 _taskListService.DeleteTask(id);
