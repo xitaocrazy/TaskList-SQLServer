@@ -3,15 +3,16 @@
     "outDir": "./built/",
     "sourceMap": true,
     "noImplicitAny": true,
-    "module": "AMD",
+    "module": "None",
     "target": "es5",
-    "lib": ["es2016", "dom"]
+    "lib": [ "es2016", "dom" ]
   },
   "files": [
     "./src/models/ITask.ts",
     "./src/models/Task.ts",
     "./src/viewModels/IndexViewModel.ts",
     "./src/components/task/TaskViewModel.ts",
+    "./src/components/taskList/TaskListViewModel.ts",
     "./src/requireJS/requireJSConfig.ts",
 
     "./specs/modelsSpecs/TaskSpecs.ts",

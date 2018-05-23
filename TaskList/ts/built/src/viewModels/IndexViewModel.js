@@ -3,48 +3,56 @@ var ViewModels;
     var IndexViewModel = /** @class */ (function () {
         function IndexViewModel() {
             var _this = this;
-            this.markAsDone = function (item) {
-                _this.taskList.remove(item);
-                _this.doneList.push(item);
+            this.insertNewTask = function (task) {
+                task.id(_this.taskList().length);
+                _this.taskList.push(task);
             };
-            this.markAsOnGoing = function (item) {
-                _this.doneList.remove(item);
-                _this.taskList.push(item);
+            this.updateTask = function (task) {
+                var oldTask = ko.utils.arrayFirst(_this.taskList(), function (item) {
+                    return item.id() === task.id();
+                });
+                oldTask.title(task.title());
+                oldTask.description(task.description());
+                oldTask.creation(task.creation());
+                oldTask.lastUpdate(task.lastUpdate());
+                oldTask.exclusion(task.exclusion());
+                oldTask.conclusion(task.conclusion());
+                oldTask.status(task.status());
             };
-            this.title = ko.observable("");
-            this.description = ko.observable("");
-            this.taskList = ko.observableArray([]);
-            this.doneList = ko.observableArray([]);
-            this.hasNoTitle = ko.observable(false);
-            this.hasNoDescription = ko.observable(false);
-            this.invalidKeyMessage = ko.observable("");
-            this.isInvalidKey = ko.computed(function () {
-                return _this.hasNoTitle();
-            });
+            this.setDefaultValues();
+            this.setComputeds();
+            this.setSignatures();
         }
-        IndexViewModel.prototype.init = function () {
+        IndexViewModel.prototype.setDefaultValues = function () {
+            this.taskList = ko.observableArray([]);
+            this.onGoingList = ko.observableArray([]);
+            this.doneList = ko.observableArray([]);
         };
-        IndexViewModel.prototype.addNewItem = function () {
-            if (this.hasValidData()) {
-                this.insertNewItem();
+        IndexViewModel.prototype.setComputeds = function () {
+            ko.computed(this.setOnGoingList, this, { disposeWhenNodeIsRemoved: true });
+            ko.computed(this.setDoneList, this, { disposeWhenNodeIsRemoved: true });
+        };
+        IndexViewModel.prototype.setOnGoingList = function () {
+            var taskList = ko.utils.arrayFilter(this.taskList(), function (task) {
+                return task.status();
+            });
+            this.onGoingList(taskList);
+        };
+        IndexViewModel.prototype.setDoneList = function () {
+            var taskList = ko.utils.arrayFilter(this.taskList(), function (task) {
+                return !task.status();
+            });
+            this.doneList(taskList);
+        };
+        IndexViewModel.prototype.setSignatures = function () {
+            this.signatures = [];
+            this.signatures.push(ko.postbox.subscribe("task.list.insertNewTask", this.insertNewTask, this));
+            this.signatures.push(ko.postbox.subscribe("task.list.updateTask", this.updateTask, this));
+        };
+        IndexViewModel.prototype.dispose = function () {
+            for (var i = 0; i < this.signatures.length; i++) {
+                this.signatures[i].dispose();
             }
-        };
-        ;
-        IndexViewModel.prototype.hasValidData = function () {
-            this.hasNoTitle(this.title() === "");
-            this.hasNoDescription(this.description() === "");
-            return !this.hasNoTitle() && !this.hasNoDescription();
-        };
-        IndexViewModel.prototype.insertNewItem = function () {
-            var task = new Models.Task(ko.observable(this.title()), ko.observable(this.description()));
-            this.taskList.push(task);
-            this.cleanData();
-        };
-        IndexViewModel.prototype.cleanData = function () {
-            this.title("");
-            this.description("");
-            this.hasNoTitle(false);
-            this.hasNoDescription(false);
         };
         return IndexViewModel;
     }());

@@ -43,9 +43,14 @@
 
     <!-- Personal Scripts inclusion -->
     <script src="js/my.ko.js"></script>
-    <script src="ts/built/src/viewModels/IndexViewModel.js"></script>
+
+    <!-- Built scripts inclusion -->
     <script src="ts/built/src/requireJS/requireJSConfig.js"></script>
     <script src="ts/built/src/models/Task.js"></script>
+    <script src="ts/built/src/viewModels/IndexViewModel.js"></script>
+    <script src="ts/built/src/components/task/TaskViewModel.js"></script>
+    <script src="ts/built/src/components/tasklist/TaskListViewModel.js"></script>
+
 </head>
 
 <body>
@@ -53,76 +58,18 @@
 </header>
 
 <main>    
-    <section id="to-do-list">
-        <!-- Add New Item To TaskList -->
-        <div class="container">
-            <div class="row text">
-                <h2>Add new <span class="text-highlighted">task!</span></h2>
-            </div>
-            <div class="row new-iten">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <div class="form-group">
-                        <label for="title">Title</label>
-                        <input type="text" id="title" class="form-control" required placeholder="Title" data-bind="textInput: title">
-                        <span id="helpBlock" class="help-block" data-bind="visible: hasNoTitle">Add a title</span>
-                    </div>
-                    <div class="form-group">
-                        <label for="description">Description</label>
-                        <input type="text" id="description" class="form-control" required placeholder="Description" data-bind="textInput: description">
-                        <span id="helpBlock" class="help-block" data-bind="visible: hasNoDescription">Add a description</span>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <button class="btn btn-lg btn-success" data-bind="click:addNewItem">Add new</button>
-            </div>
-        </div>
+    <section id="task-list">
+        <section id="task-data">
+            <task-component></task-component>
+        </section>
 
-        <!-- TaskList List -->
-        <div class="container">
-            <div class="row text">
-                <h2><span class="text-highlighted">On going List </span>list!</h2>
-            </div>
-            <div class="table-responsive">
-                <table class="table table-bordered table-hover" data-bind="bootstrapPopover : {content: 'Click in the item to mark as done', container: 'body', placement: 'right', trigger: 'hover click', delay: 150}">
-                    <thead>
-                    <tr>
-                        <th>Title</th>
-                        <th>Description</th>
-                    </tr>
-                    </thead>
-                    <tbody data-bind="foreach: taskList">
-                    <tr data-bind="click: $parent.markAsDone.bind($data)">
-                        <td data-bind="text: title"></td>
-                        <td data-bind="text: description"></td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+        <section id="on-going-list">
+            <task-list-component params="title: 'OnGoing', taskList: onGoingList"></task-list-component>
+        </section>
 
-        <!-- Done List -->
-        <div class="container">
-            <div class="row text">
-                <h2><span class="text-highlighted">Done </span>list!</h2>
-            </div>
-            <div class="table-responsive">
-                <table class="table table-bordered table-hover" data-bind="bootstrapPopover : {content: 'Click in the item to back to tasklist', container: 'body', placement: 'right', trigger: 'hover click', delay: 150}">
-                    <thead>
-                        <tr>
-                            <th>Title</th>
-                            <th>Description</th>
-                        </tr>
-                    </thead>
-                    <tbody data-bind="foreach: doneList">
-                        <tr data-bind="click: $parent.markAsOnGoing.bind($data)">
-                            <td data-bind="text: title"></td>
-                            <td data-bind="text: description"></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+        <section id="done-list">
+            <task-list-component params="title: 'Done', taskList: doneList"></task-list-component>
+        </section>
     </section>       
 </main>
 

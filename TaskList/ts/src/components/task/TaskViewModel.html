@@ -1,27 +1,56 @@
-<!-- ko if: isOk -->
 <div class="container">
-    <div class="row">
-        <div class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
-            <div class="panel" data-bind="css: style()">
-                <div class="panel-heading">
-                    <h3 class="panel-title" data-bind="text: category.name"></h3>
-                </div>
-                <div class="panel-body">                    
-                    <div>
-                        <h3>Regra</h3>
-                        <p data-bind="text: category.rule"></p>
-                    </div>
-                    <div>
-                        <h3>Pontuação</h3>
-                        <p data-bind="text: category.calculation"></p>
-                    </div>                    
-                    <div>
-                        <h3>Total de Pontos</h3>
-                        <p data-bind="text: category.points"></p>
-                    </div>
-                </div>
+    <div class="row text">
+        <h2 data-bind="text: operation"><span class="text-highlighted"> task!</span></h2>
+    </div>
+    <div class="row new-iten">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" id="title" class="form-control" required placeholder="Title" data-bind="textInput: task().title">
+                <span class="help-block" data-bind="visible: hasNoTitle">Add a title</span>
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <input type="text" id="description" class="form-control" required placeholder="Description" data-bind="textInput: task().description">
+                <span class="help-block" data-bind="visible: hasNoDescription">Add a description</span>
+            </div>
+            <!-- ko if: isEditing -->
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Creation</th>
+                            <th>Last Update</th>
+                            <th>Exclusion</th>
+                            <th>Conclusion</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-bind="text: task().creation"></td>
+                            <td data-bind="text: task().lastUpdate"></td>
+                            <td data-bind="text: task().exclusion"></td>
+                            <td data-bind="text: task().conclusion"></td>
+                            <td data-bind="text: task().statusMessage"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- /ko -->
+        </div>
+    </div>
+    <div class="row new-iten">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="form-group">
+                <button class="btn btn-lg btn-default" data-bind="click:clearData">Clear</button>
+                <!-- ko ifnot: isEditing -->
+                <button class="btn btn-lg btn-success" data-bind="click:addNewItem">Add new</button>
+                <!-- /ko -->
+                <!-- ko if: isEditing -->
+                <button class="btn btn-lg btn-success" data-bind="click:updateItem">Update task</button>
+                <!-- /ko -->
             </div>
         </div>
-    </div>        
+    </div>    
 </div>
-<!-- /ko -->

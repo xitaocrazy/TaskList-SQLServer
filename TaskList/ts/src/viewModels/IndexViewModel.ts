@@ -1,63 +1,69 @@
 module ViewModels {
     export class IndexViewModel {
-        title: KnockoutObservable<string>;
-        description: KnockoutObservable<string>;
         taskList: KnockoutObservableArray<Models.ITask>;
-        doneList: KnockoutObservableArray<Models.ITask>;
-        hasNoTitle: KnockoutObservable<boolean>;
-        hasNoDescription: KnockoutObservable<boolean>;
-        invalidKeyMessage: KnockoutObservable<string>;
-        isInvalidKey: KnockoutComputed<boolean>;
+        onGoingList: KnockoutObservableArray<Models.ITask>;
+        doneList: KnockoutObservableArray<Models.ITask>;        
+        signatures: Array<any>;
 
         constructor() {
-            this.title = ko.observable<string>("");
-            this.description = ko.observable<string>("");
+            this.setDefaultValues();
+            this.setComputeds();
+            this.setSignatures();
+        }
+
+        private setDefaultValues() {
             this.taskList = ko.observableArray<Models.ITask>([]);
+            this.onGoingList = ko.observableArray<Models.ITask>([]);
             this.doneList = ko.observableArray<Models.ITask>([]);
-            this.hasNoTitle = ko.observable<boolean>(false);
-            this.hasNoDescription = ko.observable<boolean>(false);
-            this.invalidKeyMessage = ko.observable<string>("");
-            this.isInvalidKey = ko.computed(() => {
-                return this.hasNoTitle();
+        }
+
+        private setComputeds() {
+            ko.computed(this.setOnGoingList, this, { disposeWhenNodeIsRemoved: true });
+            ko.computed(this.setDoneList, this, { disposeWhenNodeIsRemoved: true });
+        }
+
+        private setOnGoingList() {
+            const taskList = ko.utils.arrayFilter(this.taskList(), (task) => {
+                return task.status();
             });
+            this.onGoingList(taskList);
         }
 
-        init() {
-        }
+        private setDoneList() {
+            const taskList = ko.utils.arrayFilter(this.taskList(), (task) => {
+                return !task.status();
+            });
+            this.doneList(taskList);
+        }   
 
-        addNewItem() {
-            if (this.hasValidData()) {
-                this.insertNewItem();
-            }
-        };
-
-        markAsDone = (item: Models.ITask) => {
-            this.taskList.remove(item);
-            this.doneList.push(item);            
-        };
-
-        markAsOnGoing = (item: Models.ITask) => {
-            this.doneList.remove(item);
-            this.taskList.push(item);
-        };
-
-        private hasValidData() {
-            this.hasNoTitle(this.title() === "");
-            this.hasNoDescription(this.description() === "");
-            return !this.hasNoTitle() && !this.hasNoDescription();
-        }
-
-        private insertNewItem() {
-            const task = new Models.Task(ko.observable<string>(this.title()), ko.observable<string>(this.description()));
+        private insertNewTask = (task: Models.ITask) => {
+            task.id(this.taskList().length);
             this.taskList.push(task);
-            this.cleanData();
-        }
+        };
 
-        private cleanData() {
-            this.title("");
-            this.description("");
-            this.hasNoTitle(false);
-            this.hasNoDescription(false);
+        private updateTask = (task: Models.ITask) => {
+            const oldTask = ko.utils.arrayFirst(this.taskList(), (item) => {
+                return item.id() === task.id();
+            });
+            oldTask.title(task.title());
+            oldTask.description(task.description());
+            oldTask.creation(task.creation());
+            oldTask.lastUpdate(task.lastUpdate());
+            oldTask.exclusion(task.exclusion());
+            oldTask.conclusion(task.conclusion());
+            oldTask.status(task.status());
+        };
+
+        private setSignatures() {
+            this.signatures = [];
+            this.signatures.push(ko.postbox.subscribe("task.list.insertNewTask", this.insertNewTask, this));
+            this.signatures.push(ko.postbox.subscribe("task.list.updateTask", this.updateTask, this));
+        }           
+
+        dispose() {
+            for (let i = 0; i < this.signatures.length; i++) {
+                this.signatures[i].dispose();
+            }
         }
     }
 }

@@ -4,9 +4,10 @@
         title: KnockoutObservable<string>;
         status: KnockoutObservable<boolean>;
         description: KnockoutObservable<string>;
-        creation: KnockoutObservable<Date>;
-        lasUpdate: KnockoutObservable<Date>;
-        exclusion: KnockoutObservable<Date>;
-        conclusion: KnockoutObservable<Date>;
-    }    
+        creation: KnockoutObservable<string>;
+        lastUpdate?: KnockoutObservable<string>;
+        exclusion?: KnockoutObservable<string>;
+        conclusion?: KnockoutObservable<string>;
+        statusMessage: KnockoutObservable<string>;
+    }
 }

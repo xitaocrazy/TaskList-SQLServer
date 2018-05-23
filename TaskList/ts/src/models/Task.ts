@@ -1,23 +1,28 @@
 ﻿module Models {
     export class Task implements ITask {
-        id: KnockoutObservable<number>;
-        status: KnockoutObservable<boolean>;
-        creation: KnockoutObservable<Date>;
-        lasUpdate: KnockoutObservable<Date>;
-        exclusion: KnockoutObservable<Date>;
-        conclusion: KnockoutObservable<Date>;
+        statusMessage: KnockoutObservable<string>;
 
-        constructor(public title: KnockoutObservable<string>, public description: KnockoutObservable<string>) {
+        constructor(public title: KnockoutObservable<string>, public description: KnockoutObservable<string>,
+            public id: KnockoutObservable<number> = ko.observable<number>(0),
+            public status: KnockoutObservable<boolean> = ko.observable<boolean>(true),
+            public creation: KnockoutObservable<string> = ko.observable<string>(""),
+            public lastUpdate: KnockoutObservable<string> = ko.observable<string>(""),
+            public exclusion: KnockoutObservable<string> = ko.observable<string>(""),
+            public conclusion: KnockoutObservable<string> = ko.observable<string>("")) {
             this.setDefaultValues();
+            this.setComputeds();
         }
 
         private setDefaultValues() {
-            this.id = ko.observable<number>(0);
-            this.status = ko.observable<boolean>(true);
-            this.creation = ko.observable(new Date());
-            this.lasUpdate = ko.observable(new Date());
-            this.exclusion = ko.observable(new Date());
-            this.conclusion = ko.observable(new Date());
+            this.statusMessage = ko.observable<string>("");
+        }
+
+        private setComputeds() {
+            ko.computed(this.setstatusMessage, this, { disposeWhenNodeIsRemoved: true });
+        }
+
+        private setstatusMessage() {
+            this.statusMessage(this.status() ? "On going" : "Done");            
         }
     }
 }
