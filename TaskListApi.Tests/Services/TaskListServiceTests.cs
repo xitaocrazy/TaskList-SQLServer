@@ -121,6 +121,20 @@ namespace TaskListApi.Tests.Services {
         }
 
         [Test]
+        public void UpdateTaskStatus_should_call_unitOfWork_taskListItenRepository_only_one_time_when_is_cancelled() {
+            _task.Exclusion = DateTime.Now;
+            _taskListService.UpdateTaskStatus(1, true);
+            _mockUnityOfWork.Verify(u => u.TaskListItenRepository, Times.Once);
+        }
+
+        [Test]
+        public void UpdateTaskStatus_should_not_call_unitOfWork_taskListItenRepository_update_when_is_cancelled() {
+            _task.Exclusion = DateTime.Now;
+            _taskListService.UpdateTaskStatus(1, true);
+            _mockRepository.Verify(r => r.Update(It.IsAny<Task>()), Times.Never);
+        }
+
+        [Test]
         public void DeleteTask_should_call_unitOfWork_taskListItenRepository() {
             _taskListService.DeleteTask(1);
             _mockUnityOfWork.Verify(u => u.TaskListItenRepository, Times.Exactly(2));

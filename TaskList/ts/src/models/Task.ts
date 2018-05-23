@@ -22,7 +22,13 @@
         }
 
         private setstatusMessage() {
-            this.statusMessage(this.status() ? "On going" : "Done");            
+            if (this.exclusion() !== null && this.exclusion() !== "") {
+                this.statusMessage("Cancelled");
+            } else if (this.conclusion() !== null && this.conclusion() !== "") {
+                this.statusMessage("Done");
+            } else {
+                this.statusMessage("On going"); 
+            }                       
         }
     }
 }

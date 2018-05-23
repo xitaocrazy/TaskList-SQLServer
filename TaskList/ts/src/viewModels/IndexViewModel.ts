@@ -2,11 +2,11 @@ module ViewModels {
     export class IndexViewModel {
         taskList: KnockoutObservableArray<Models.ITask>;
         onGoingList: KnockoutObservableArray<Models.ITask>;
-        doneList: KnockoutObservableArray<Models.ITask>;        
+        doneList: KnockoutObservableArray<Models.ITask>; 
+        cancelledList: KnockoutObservableArray<Models.ITask>;
+        canceldList: KnockoutObservableArray<Models.ITask>;
         signatures: Array<any>;
-        urlGetAllTasks = "http://localhost:8880/api/TaskList/GetAllTasks";
-        urlCreateTask = "http://localhost:8880/api/TaskList/CreateTask";
-        urlUpdateTask = "http://localhost:8880/api/TaskList/UpdateTask";
+        urlGetAllTasks = "http://localhost:8880/api/TaskList/GetAllTasks";        
 
         constructor() {
             this.setDefaultValues();
@@ -19,66 +19,35 @@ module ViewModels {
             this.taskList = ko.observableArray<Models.ITask>([]);
             this.onGoingList = ko.observableArray<Models.ITask>([]);
             this.doneList = ko.observableArray<Models.ITask>([]);
+            this.cancelledList = ko.observableArray<Models.ITask>([]);
         }
 
         private setComputeds() {
             ko.computed(this.setOnGoingList, this, { disposeWhenNodeIsRemoved: true });
             ko.computed(this.setDoneList, this, { disposeWhenNodeIsRemoved: true });
+            ko.computed(this.setCancelledList, this, { disposeWhenNodeIsRemoved: true });
         }
 
         private setOnGoingList() {
             const taskList = ko.utils.arrayFilter(this.taskList(), (task) => {
-                return task.status();
+                return task.status() && (task.exclusion() === null || task.exclusion() === "") && (task.conclusion() === null || task.conclusion() === "");
             });
             this.onGoingList(taskList);
         }
 
         private setDoneList() {
             const taskList = ko.utils.arrayFilter(this.taskList(), (task) => {
-                return !task.status();
+                return !task.status() && (task.exclusion() === null || task.exclusion() === "");
             });
             this.doneList(taskList);
-        } 
+        }    
 
-        private createObjectToPost(task: Models.ITask, url: string, type: string) {
-            const params = {
-                "Id": task.id(),
-                "Title": task.title(),
-                "Status": true,
-                "Description": task.description(),
-                "Creation": task.creation(),
-                "LasUpdate": task.lastUpdate(),
-                "Exclusion": task.exclusion(),
-                "Conclusion": task.conclusion()
-            };
-            const object = {
-                url: url,
-                data: JSON.stringify(params),
-                contentType: "application/json",
-                type: type
-            };
-            return object;
+        private setCancelledList() {
+            const taskList = ko.utils.arrayFilter(this.taskList(), (task) => {
+                return task.exclusion() !== null && task.exclusion() !== "";
+            });
+            this.cancelledList(taskList);
         }
-
-        private postTask(object: any) {
-            $.post(object)
-                .done(() => {
-                    this.getAllTasks();
-                })
-                .fail((request, message, error) => {
-                    this.showError(request, message, error);
-                });
-        };
-
-        private insertNewTask = (task: Models.ITask) => {
-            var object = this.createObjectToPost(task, this.urlCreateTask, "POST");
-            this.postTask(object);
-        };        
-
-        private updateTask = (task: Models.ITask) => {
-            var object = this.createObjectToPost(task, this.urlUpdateTask, "PUT");
-            this.postTask(object);
-        };
 
         private getAllTasks() {
             this.taskList([]);
@@ -91,7 +60,7 @@ module ViewModels {
                 });
         }
 
-        private setTaskList = (result: [any]) => {
+        private setTaskList (result: [any]) {
             const taskList = ko.utils.arrayMap(result, (task) => {
                 return new Models.Task(ko.observable<string>(task["Title"]),
                     ko.observable<string>(task["Description"]),
@@ -105,15 +74,14 @@ module ViewModels {
             this.taskList(taskList);
         };
 
-        private showError = (request: any, message: any, error: any) => {
-            console.log("Ops. Algo errado não está certo. Tente novamente"); 
-            console.log(message + ". Erro: " + error); 
+        private showError (request: any, message: any, error: any) {
+            alert("Ops. Algo errado não está certo. Tente novamente");
+            console.log(message + ". Erro: " + error);
         };
-
+        
         private setSignatures() {
             this.signatures = [];
-            this.signatures.push(ko.postbox.subscribe("task.list.insertNewTask", this.insertNewTask, this));
-            this.signatures.push(ko.postbox.subscribe("task.list.updateTask", this.updateTask, this));
+            this.signatures.push(ko.postbox.subscribe("task.list.reloadTasks", this.getAllTasks, this));
         }           
 
         dispose() {

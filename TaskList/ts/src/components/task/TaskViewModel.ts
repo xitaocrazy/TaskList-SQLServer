@@ -7,6 +7,8 @@ module KnockoutComponents{
         hasNoTitle: KnockoutObservable<boolean>;
         hasNoDescription: KnockoutObservable<boolean>;
         signatures: Array<any>;
+        urlCreateTask = "http://localhost:8880/api/TaskList/CreateTask";
+        urlUpdateTask = "http://localhost:8880/api/TaskList/UpdateTask";
 
         constructor(private params: any) {
             this.setDefaultValues();
@@ -42,13 +44,43 @@ module KnockoutComponents{
             this.isEditing(false);
         }
 
-        private insertNewTask() {
-            const task = new Models.Task(ko.observable<string>(this.task().title()), ko.observable<string>(this.task().description()));
-            ko.postbox.publish("task.list.insertNewTask", task);
-            this.cleanData();
+        private createObjectToPost(task: Models.ITask, url: string, type: string) {
+            const params = {
+                "Id": task.id(),
+                "Title": task.title(),
+                "Status": true,
+                "Description": task.description(),
+                "Creation": task.creation(),
+                "LasUpdate": task.lastUpdate(),
+                "Exclusion": task.exclusion(),
+                "Conclusion": task.conclusion()
+            };
+            const object = {
+                url: url,
+                data: JSON.stringify(params),
+                contentType: "application/json",
+                type: type
+            };
+            return object;
         }
 
-        private selectToEdit = (task: Models.ITask) => {
+        private postTask(object: any) {
+            $.post(object)
+                .done(() => {
+                    this.cleanData();
+                    ko.postbox.publish("task.list.reloadTasks");
+                })
+                .fail((request, message, error) => {
+                    this.showError(request, message, error);
+                });
+        };
+
+        private showError (request: any, message: any, error: any)  {
+            alert("Ops. Algo errado não está certo. Tente novamente");
+            console.log(message + ". Erro: " + error);
+        };
+
+        private selectToEdit (task: Models.ITask) {
             this.isEditing(true);
             this.taskToEdit = task;
             this.task().id(task.id());
@@ -64,8 +96,8 @@ module KnockoutComponents{
         private setSignatures() {
             this.signatures = [];
             this.signatures.push(ko.postbox.subscribe("task.list.selectToEdit", this.selectToEdit, this));
-            this.signatures.push(ko.postbox.subscribe("task.list.changeStatus", this.clearData, this));
-        }                
+            this.signatures.push(ko.postbox.subscribe("task.list.reloadTasks", this.clearData, this));
+        }  
 
         clearData() {
             this.cleanData();
@@ -73,7 +105,9 @@ module KnockoutComponents{
 
         addNewItem() {
             if (this.hasValidData()) {
-                this.insertNewTask();
+                const task = new Models.Task(ko.observable<string>(this.task().title()), ko.observable<string>(this.task().description()));
+                const object = this.createObjectToPost(task, this.urlCreateTask, "POST");
+                this.postTask(object);
             }
         };
 
@@ -81,8 +115,8 @@ module KnockoutComponents{
             if (this.hasValidData()) {
                 this.taskToEdit = this.task();
             }
-            ko.postbox.publish("task.list.updateTask", this.taskToEdit);
-            this.cleanData();
+            const object = this.createObjectToPost(this.taskToEdit, this.urlUpdateTask, "PUT");
+            this.postTask(object);
         };
     }
 }

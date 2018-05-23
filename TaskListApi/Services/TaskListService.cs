@@ -31,6 +31,9 @@ namespace TaskListApi.Services {
 
         public void UpdateTaskStatus(int id, bool status) {
             var task = _unitOfWork.TaskListItenRepository.GetById(id);
+            if (task.Exclusion != null) {
+                return;                
+            }
             task.Status = status;
             if (status) { //When status = true, task was no finished or was reopened.
                 task.Conclusion = null;
