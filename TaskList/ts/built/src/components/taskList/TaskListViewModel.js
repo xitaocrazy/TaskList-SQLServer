@@ -11,7 +11,15 @@ var KnockoutComponents;
             };
             this.changeStatus = function (task) {
                 if (task.exclusion() === null || task.exclusion() === "") {
-                    var object = _this.createObjectToPost(task, "PUT");
+                    var url = _this.urlUpdateTask + "?id=" + task.id() + "&status=" + !task.status();
+                    var object = _this.createObjectToPost(task, url, "PUT");
+                    _this.postTask(object);
+                }
+            };
+            this.cancelTask = function (task) {
+                if (task.status()) {
+                    var url = _this.urlUpdateTask + "?id=" + task.id();
+                    var object = _this.createObjectToPost(task, url, "DELETE");
                     _this.postTask(object);
                 }
             };
@@ -21,8 +29,7 @@ var KnockoutComponents;
             this.title = ko.observable(this.params.title);
             this.taskList = this.params.taskList;
         };
-        TaskListViewModel.prototype.createObjectToPost = function (task, type) {
-            var url = this.urlUpdateTask + "?id=" + task.id() + "&status=" + !task.status();
+        TaskListViewModel.prototype.createObjectToPost = function (task, url, type) {
             var object = {
                 url: url,
                 contentType: "application/json",

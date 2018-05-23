@@ -2,7 +2,6 @@
     <div class="row text">
         <h2><span class="text-highlighted" data-bind="text: title"></span> list!</h2>
     </div>
-    <p><span class="glyphicon glyphicon-question-sign" data-bind="bootstrapPopover : {content: 'Click in the title to edit or in the status to change it.', container: 'body', placement: 'top', trigger: 'hover click', delay: 150}"></span></p>
     <div class="table-responsive">
         <table class="table table-bordered table-hover">
             <thead>
@@ -14,17 +13,27 @@
                     <th>Exclusion</th>
                     <th>Conclusion</th>
                     <th>Status</th>
+                    <th>Operations</th>
                 </tr>
             </thead>
             <tbody data-bind="foreach: taskList">
                 <tr>
-                    <td data-bind="text: title, click: $parent.selectToEdit.bind($data)"></td>
+                    <td data-bind="text: title"></td>
                     <td data-bind="text: description"></td>
                     <td data-bind="text: creation"></td>
                     <td data-bind="text: lastUpdate"></td>
                     <td data-bind="text: exclusion"></td>
                     <td data-bind="text: conclusion"></td>
-                    <td data-bind="text: statusMessage, click: $parent.changeStatus.bind($data)"></td>
+                    <td data-bind="text: statusMessage"></td>
+                    <td>
+                        <div class="btn-group" role="group" aria-label="...">
+                            <!-- ko ifnot: isCancelled -->
+                            <button type="button" class="btn btn-default btn-xs" data-bind="click: $parent.selectToEdit.bind($data)">Edit</button>
+                            <button type="button" class="btn btn-default btn-xs" data-bind="click: $parent.cancelTask.bind($data)">Cancel</button>
+                            <button type="button" class="btn btn-default btn-xs" data-bind="text: actionMessage, click: $parent.changeStatus.bind($data)"></button>
+                            <!-- /ko -->
+                        </div>
+                    </td>
                 </tr>
             </tbody>
         </table>

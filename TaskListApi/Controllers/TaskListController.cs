@@ -11,7 +11,6 @@ namespace TaskListApi.Controllers {
         private const string OnGoingTasks = "api/TaskList/GetOnGoingTasks";
         private const string DoneTasks = "api/TaskList/GetDoneTasks";
         private const string ExcludedTasks = "api/TaskList/GetExcludedTasks";
-        //private const string UpdateStatus = "api/TaskList/UpdateTaskStatus";
 
         public TaskListController(ITaskListService taskListService) {
             _taskListService = taskListService;
@@ -94,7 +93,6 @@ namespace TaskListApi.Controllers {
         }
 
         [HttpPut]
-        //[Route(UpdateStatus)]
         [EnableCors("*", "*", "*")]
         public IHttpActionResult UpdateTaskStatus(int id, bool status) {
             try {

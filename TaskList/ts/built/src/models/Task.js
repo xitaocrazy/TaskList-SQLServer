@@ -21,12 +21,17 @@ var Models;
         }
         Task.prototype.setDefaultValues = function () {
             this.statusMessage = ko.observable("");
+            this.actionMessage = ko.observable("");
+            this.isCancelled = ko.observable(false);
         };
         Task.prototype.setComputeds = function () {
-            ko.computed(this.setstatusMessage, this, { disposeWhenNodeIsRemoved: true });
+            ko.computed(this.setStatusMessage, this, { disposeWhenNodeIsRemoved: true });
+            ko.computed(this.setActionMessage, this, { disposeWhenNodeIsRemoved: true });
         };
-        Task.prototype.setstatusMessage = function () {
+        Task.prototype.setStatusMessage = function () {
+            this.isCancelled(false);
             if (this.exclusion() !== null && this.exclusion() !== "") {
+                this.isCancelled(true);
                 this.statusMessage("Cancelled");
             }
             else if (this.conclusion() !== null && this.conclusion() !== "") {
@@ -35,6 +40,9 @@ var Models;
             else {
                 this.statusMessage("On going");
             }
+        };
+        Task.prototype.setActionMessage = function () {
+            this.actionMessage(this.status() ? "Finish" : "Reopen");
         };
         return Task;
     }());

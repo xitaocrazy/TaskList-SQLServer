@@ -48,7 +48,7 @@ module KnockoutComponents{
             const params = {
                 "Id": task.id(),
                 "Title": task.title(),
-                "Status": true,
+                "Status": task.status(),
                 "Description": task.description(),
                 "Creation": task.creation(),
                 "LasUpdate": task.lastUpdate(),
@@ -106,6 +106,7 @@ module KnockoutComponents{
         addNewItem() {
             if (this.hasValidData()) {
                 const task = new Models.Task(ko.observable<string>(this.task().title()), ko.observable<string>(this.task().description()));
+                task.status(true);
                 const object = this.createObjectToPost(task, this.urlCreateTask, "POST");
                 this.postTask(object);
             }

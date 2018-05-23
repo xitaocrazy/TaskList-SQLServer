@@ -13,8 +13,7 @@
             this.taskList = this.params.taskList;
         }  
 
-        private createObjectToPost(task: Models.ITask, type: string) {
-            const url = this.urlUpdateTask + "?id=" + task.id() + "&status=" + !task.status();
+        private createObjectToPost(task: Models.ITask, url: string, type: string) {            
             const object = {
                 url: url,
                 contentType: "application/json",
@@ -44,10 +43,19 @@
 
         changeStatus = (task: Models.ITask) => {
             if (task.exclusion() === null || task.exclusion() === "") {
-                const object = this.createObjectToPost(task, "PUT");
+                const url = this.urlUpdateTask + "?id=" + task.id() + "&status=" + !task.status();
+                const object = this.createObjectToPost(task, url, "PUT");
                 this.postTask(object);
             }
-        };        
+        };   
+
+        cancelTask = (task: Models.ITask) => {
+            if (task.status()) {
+                const url = this.urlUpdateTask + "?id=" + task.id();
+                const object = this.createObjectToPost(task, url, "DELETE");
+                this.postTask(object);
+            }
+        };
     }
 }
 
