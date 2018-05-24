@@ -17,6 +17,7 @@
 
     "./specs/modelsSpecs/TaskSpecs.ts",
     "./specs/viewModelsSpecs/IndexViewModelSpecs.ts",
-    "./specs/componentsSpecs/taskSpecs/TaskViewModelSpecs.ts"
+    "./specs/componentsSpecs/taskSpecs/TaskViewModelSpecs.ts",
+    "./specs/componentsSpecs/taskListSpecs/TaskListViewModelSpecs.ts"
   ]
 }

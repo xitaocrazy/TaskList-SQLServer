@@ -4,7 +4,6 @@ module ViewModels {
         onGoingList: KnockoutObservableArray<Models.ITask>;
         doneList: KnockoutObservableArray<Models.ITask>; 
         cancelledList: KnockoutObservableArray<Models.ITask>;
-        canceldList: KnockoutObservableArray<Models.ITask>;
         signatures: Array<any>;
         urlGetAllTasks = "http://localhost:8880/api/TaskList/GetAllTasks";        
 
@@ -60,7 +59,7 @@ module ViewModels {
                 });
         }
 
-        private setTaskList (result: [any]) {
+        private setTaskList(result: [any]) {            
             const taskList = ko.utils.arrayMap(result, (task) => {
                 return new Models.Task(ko.observable<string>(task["Title"]),
                     ko.observable<string>(task["Description"]),
