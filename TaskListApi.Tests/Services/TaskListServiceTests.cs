@@ -83,7 +83,7 @@ namespace TaskListApi.Tests.Services {
         [Test]
         public void UpdateTask_should_set_last_update_date() {
             _taskListService.UpdateTask(_task);
-            Assert.IsNotNull(_task.LasUpdate);
+            Assert.IsNotNull(_task.LastUpdate);
         }
 
         [Test]
@@ -107,7 +107,7 @@ namespace TaskListApi.Tests.Services {
         [Test]
         public void UpdateTaskStatus_should_set_the_expected_values_when_status_true() {
             _taskListService.UpdateTaskStatus(1, true);
-            Assert.IsNotNull(_task.LasUpdate);
+            Assert.IsNotNull(_task.LastUpdate);
             Assert.IsNull(_task.Conclusion);
             Assert.IsTrue(_task.Status);
         }
@@ -115,7 +115,7 @@ namespace TaskListApi.Tests.Services {
         [Test]
         public void UpdateTaskStatus_should_set_the_expected_values_when_status_false() {
             _taskListService.UpdateTaskStatus(1, false);
-            Assert.IsNotNull(_task.LasUpdate);
+            Assert.IsNotNull(_task.LastUpdate);
             Assert.IsNotNull(_task.Conclusion);
             Assert.IsFalse(_task.Status);
         }
@@ -155,7 +155,7 @@ namespace TaskListApi.Tests.Services {
         [Test]
         public void DeleteTask_should_set_the_expected_values_when_status_true() {
             _taskListService.DeleteTask(1);
-            Assert.IsNotNull(_task.LasUpdate);
+            Assert.IsNotNull(_task.LastUpdate);
             Assert.IsNotNull(_task.Exclusion);
         }
 
@@ -184,7 +184,7 @@ namespace TaskListApi.Tests.Services {
                 .With(t => t.Status = true)
                 .With(t => t.Description = "Task 1")
                 .With(t => t.Creation = _data)
-                .With(t => t.LasUpdate = null)
+                .With(t => t.LastUpdate = null)
                 .With(t => t.Exclusion = null)
                 .With(t => t.Conclusion = null)
                 .Build();
@@ -198,7 +198,7 @@ namespace TaskListApi.Tests.Services {
                 .With(t => t.Status = true)
                 .With(t => t.Description = $"Task {t.Id}")
                 .With(t => t.Creation = _data)
-                .With(t => t.LasUpdate = null)
+                .With(t => t.LastUpdate = null)
                 .With(t => t.Exclusion = null)
                 .With(t => t.Conclusion = null)
                 .With(t => t.Conclusion = null)

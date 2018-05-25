@@ -1,11 +1,11 @@
 var KnockoutComponents;
 (function (KnockoutComponents) {
     var TaskViewModel = /** @class */ (function () {
-        function TaskViewModel(params) {
-            this.params = params;
+        function TaskViewModel() {
             this.urlCreateTask = "http://localhost:8880/api/TaskList/CreateTask";
             this.urlUpdateTask = "http://localhost:8880/api/TaskList/UpdateTask";
             this.setDefaultValues();
+            this.setComputeds();
             this.setSignatures();
         }
         TaskViewModel.prototype.setDefaultValues = function () {
@@ -19,7 +19,7 @@ var KnockoutComponents;
             ko.computed(this.setOperation, this, { disposeWhenNodeIsRemoved: true });
         };
         TaskViewModel.prototype.setOperation = function () {
-            this.operation(this.isEditing() ? "Add new" : "Update");
+            this.operation(this.isEditing() ? "Update Task" : "Add New Task");
         };
         TaskViewModel.prototype.hasValidData = function () {
             this.hasNoTitle(this.task().title() === "");
@@ -39,7 +39,7 @@ var KnockoutComponents;
                 "Status": task.status(),
                 "Description": task.description(),
                 "Creation": task.creation(),
-                "LasUpdate": task.lastUpdate(),
+                "LastUpdate": task.lastUpdate(),
                 "Exclusion": task.exclusion(),
                 "Conclusion": task.conclusion()
             };
@@ -102,11 +102,16 @@ var KnockoutComponents;
         TaskViewModel.prototype.updateItem = function () {
             if (this.hasValidData()) {
                 this.taskToEdit = this.task();
+                var object = this.createObjectToPost(this.taskToEdit, this.urlUpdateTask, "PUT");
+                this.postTask(object);
             }
-            var object = this.createObjectToPost(this.taskToEdit, this.urlUpdateTask, "PUT");
-            this.postTask(object);
         };
         ;
+        TaskViewModel.prototype.dispose = function () {
+            for (var i = 0; i < this.signatures.length; i++) {
+                this.signatures[i].dispose();
+            }
+        };
         return TaskViewModel;
     }());
     KnockoutComponents.TaskViewModel = TaskViewModel;

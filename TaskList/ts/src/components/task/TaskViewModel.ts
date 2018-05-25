@@ -10,8 +10,9 @@ module KnockoutComponents{
         urlCreateTask = "http://localhost:8880/api/TaskList/CreateTask";
         urlUpdateTask = "http://localhost:8880/api/TaskList/UpdateTask";
 
-        constructor(private params: any) {
+        constructor() {
             this.setDefaultValues();
+            this.setComputeds();
             this.setSignatures();
         }
 
@@ -28,7 +29,7 @@ module KnockoutComponents{
         }
 
         private setOperation() {
-            this.operation(this.isEditing() ? "Add new" : "Update");
+            this.operation(this.isEditing() ? "Update Task" : "Add New Task");
         }
 
         private hasValidData() {
@@ -51,7 +52,7 @@ module KnockoutComponents{
                 "Status": task.status(),
                 "Description": task.description(),
                 "Creation": task.creation(),
-                "LasUpdate": task.lastUpdate(),
+                "LastUpdate": task.lastUpdate(),
                 "Exclusion": task.exclusion(),
                 "Conclusion": task.conclusion()
             };
@@ -115,10 +116,16 @@ module KnockoutComponents{
         updateItem() {
             if (this.hasValidData()) {
                 this.taskToEdit = this.task();
-            }
-            const object = this.createObjectToPost(this.taskToEdit, this.urlUpdateTask, "PUT");
-            this.postTask(object);
+                const object = this.createObjectToPost(this.taskToEdit, this.urlUpdateTask, "PUT");
+                this.postTask(object);
+            }            
         };
+
+        dispose() {
+            for (let i = 0; i < this.signatures.length; i++) {
+                this.signatures[i].dispose();
+            }
+        }
     }
 }
 

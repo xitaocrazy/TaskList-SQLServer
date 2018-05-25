@@ -224,7 +224,7 @@ namespace TaskListApi.Tests.Controllers {
                 .With(t => t.Status = true)
                 .With(t => t.Description = "Task 1")
                 .With(t => t.Creation = _data)
-                .With(t => t.LasUpdate = null)
+                .With(t => t.LastUpdate = null)
                 .With(t => t.Exclusion = null)
                 .With(t => t.Conclusion = null)
                 .Build();
@@ -238,7 +238,7 @@ namespace TaskListApi.Tests.Controllers {
                 .With(t => t.Status = true)
                 .With(t => t.Description = $"Task {t.Id}")
                 .With(t => t.Creation = _data)
-                .With(t => t.LasUpdate = null)
+                .With(t => t.LastUpdate = null)
                 .With(t => t.Exclusion = null)
                 .With(t => t.Conclusion = null)
                 .With(t => t.Conclusion = null)

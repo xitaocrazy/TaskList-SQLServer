@@ -25,7 +25,7 @@ namespace TaskListApi.Services {
         }
 
         public void UpdateTask(Task task) {
-            task.LasUpdate = DateTime.Now;
+            task.LastUpdate = DateTime.Now;
             _unitOfWork.TaskListItenRepository.Update(task);
         }
 

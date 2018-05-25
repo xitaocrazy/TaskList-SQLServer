@@ -11,7 +11,9 @@ describe("With an IndexViewModel", function () {
     var getJsonSpy;
     var alertSpy;
     var logSpy;
+    var urlGetAllTasks;
     beforeEach(function () {
+        urlGetAllTasks = "http://localhost:8880/api/TaskList/GetAllTasks";
         task1Json = {
             Id: 1,
             Title: "Task 1",
@@ -98,6 +100,9 @@ describe("With an IndexViewModel", function () {
                 });
                 ko.postbox.publish("task.list.reloadTasks");
             });
+            it("should call getJson", function () {
+                expect(getJsonSpy).toHaveBeenCalledWith(urlGetAllTasks);
+            });
             it("should set taskList with the expected quantity", function () {
                 expect(vm.taskList().length).toEqual(tasks.length);
             });
@@ -137,6 +142,9 @@ describe("With an IndexViewModel", function () {
                 logSpy = spyOn(console, "log");
                 ko.postbox.publish("task.list.reloadTasks");
             });
+            it("should call getJson", function () {
+                expect(getJsonSpy).toHaveBeenCalledWith(urlGetAllTasks);
+            });
             it("should clear taskList", function () {
                 expect(vm.taskList().length).toEqual(0);
             });
@@ -170,32 +178,32 @@ describe("With an IndexViewModel", function () {
             });
         });
     });
+    function validateTask(expected, actual) {
+        it("shloud set 'id' as expected", function () {
+            expect(actual.id()).toEqual(actual.id());
+        });
+        it("shloud set 'title' as expected", function () {
+            expect(actual.title()).toEqual(expected.title());
+        });
+        it("shloud set 'description' as expected", function () {
+            expect(actual.description()).toEqual(expected.description());
+        });
+        it("shloud set 'status' as expected", function () {
+            expect(actual.status()).toEqual(expected.status());
+        });
+        it("shloud set 'creation' as expected", function () {
+            expect(actual.creation()).toEqual(expected.creation());
+        });
+        it("shloud set 'lastUpdate' as expected", function () {
+            expect(actual.lastUpdate()).toEqual(expected.lastUpdate());
+        });
+        it("shloud set 'exclusion' as expected", function () {
+            expect(actual.exclusion()).toEqual(expected.exclusion());
+        });
+        it("shloud set 'conclusion' as expected", function () {
+            expect(actual.conclusion()).toEqual(expected.conclusion());
+        });
+    }
+    ;
 });
-function validateTask(expected, actual) {
-    it("shloud set 'id' as expected", function () {
-        expect(actual.id()).toEqual(actual.id());
-    });
-    it("shloud set 'title' as expected", function () {
-        expect(actual.title()).toEqual(expected.title());
-    });
-    it("shloud set 'description' as expected", function () {
-        expect(actual.description()).toEqual(expected.description());
-    });
-    it("shloud set 'status' as expected", function () {
-        expect(actual.status()).toEqual(expected.status());
-    });
-    it("shloud set 'creation' as expected", function () {
-        expect(actual.creation()).toEqual(expected.creation());
-    });
-    it("shloud set 'lastUpdate' as expected", function () {
-        expect(actual.lastUpdate()).toEqual(expected.lastUpdate());
-    });
-    it("shloud set 'exclusion' as expected", function () {
-        expect(actual.exclusion()).toEqual(expected.exclusion());
-    });
-    it("shloud set 'conclusion' as expected", function () {
-        expect(actual.conclusion()).toEqual(expected.conclusion());
-    });
-}
-;
 //# sourceMappingURL=IndexViewModelSpecs.js.map

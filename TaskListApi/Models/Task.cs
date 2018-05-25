@@ -15,14 +15,14 @@ namespace TaskListApi.Models {
         public string Description { get; set; }
         [Required]
         public DateTime Creation { get; set; }
-        public DateTime? LasUpdate { get; set; }
+        public DateTime? LastUpdate { get; set; }
         public DateTime? Exclusion { get; set; }
         public DateTime? Conclusion { get; set; }
 
         public override string ToString() {
             var active = Status ? "On going" : "Done";
             return
-                $"Title: {Title} - Description: {Description} - Status: {active} - Creation: {Creation} - LasUpdate: {LasUpdate} - Exclusion: {Exclusion} - Conclusion: {Conclusion}";
+                $"Title: {Title} - Description: {Description} - Status: {active} - Creation: {Creation} - LasUpdate: {LastUpdate} - Exclusion: {Exclusion} - Conclusion: {Conclusion}";
         }
 
         public override int GetHashCode() {
@@ -32,7 +32,7 @@ namespace TaskListApi.Models {
                 hashCode = (hashCode * 397) ^ Status.GetHashCode();
                 hashCode = (hashCode * 397) ^ Description?.GetHashCode() ?? 0;
                 hashCode = (hashCode * 397) ^ Creation.GetHashCode();
-                hashCode = (hashCode * 397) ^ LasUpdate?.GetHashCode() ?? 0;
+                hashCode = (hashCode * 397) ^ LastUpdate?.GetHashCode() ?? 0;
                 hashCode = (hashCode * 397) ^ Exclusion?.GetHashCode() ?? 0;
                 hashCode = (hashCode * 397) ^ Conclusion?.GetHashCode() ?? 0;
                 return hashCode;
@@ -46,7 +46,7 @@ namespace TaskListApi.Models {
                    Status == other.Status &&
                    String.Equals(Description, other.Description) &&
                    Creation == other.Creation &&
-                   DateTime.Equals(LasUpdate, other.LasUpdate) &&
+                   DateTime.Equals(LastUpdate, other.LastUpdate) &&
                    DateTime.Equals(Exclusion, other.Exclusion) &&
                    DateTime.Equals(Conclusion, other.Conclusion);
         }

@@ -20,7 +20,7 @@ namespace TaskListApi.Tests.Models {
                 .With(t => t.Status = true)
                 .With(t => t.Description = "Task 1")
                 .With(t => t.Creation = _data)
-                .With(t => t.LasUpdate = null)
+                .With(t => t.LastUpdate = null)
                 .With(t => t.Exclusion = null)
                 .With(t => t.Conclusion = null)
                 .Build();
@@ -30,7 +30,7 @@ namespace TaskListApi.Tests.Models {
                 .With(t => t.Status = true)
                 .With(t => t.Description = "Task 2")
                 .With(t => t.Creation = _data)
-                .With(t => t.LasUpdate = null)
+                .With(t => t.LastUpdate = null)
                 .With(t => t.Exclusion = null)
                 .With(t => t.Conclusion = null)
                 .Build();
@@ -40,7 +40,7 @@ namespace TaskListApi.Tests.Models {
                 .With(t => t.Status = true)
                 .With(t => t.Description = "Task 1")
                 .With(t => t.Creation = _data)
-                .With(t => t.LasUpdate = null)
+                .With(t => t.LastUpdate = null)
                 .With(t => t.Exclusion = null)
                 .With(t => t.Conclusion = null)
                 .Build();
@@ -116,7 +116,7 @@ namespace TaskListApi.Tests.Models {
                 hashCode = (hashCode * 397) ^ task.Status.GetHashCode();
                 hashCode = (hashCode * 397) ^ task.Description?.GetHashCode() ?? 0;
                 hashCode = (hashCode * 397) ^ task.Creation.GetHashCode();
-                hashCode = (hashCode * 397) ^ task.LasUpdate?.GetHashCode() ?? 0;
+                hashCode = (hashCode * 397) ^ task.LastUpdate?.GetHashCode() ?? 0;
                 hashCode = (hashCode * 397) ^ task.Exclusion?.GetHashCode() ?? 0;
                 hashCode = (hashCode * 397) ^ task.Conclusion?.GetHashCode() ?? 0;
                 return hashCode;
